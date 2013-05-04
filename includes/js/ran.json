@@ -1,8 +1,0 @@
-{
-	"year": 2013,
-	"opinions": [
-		[3.0, 10.7, 14.5, 42.1, 29.8], 	// 0: Jews opinions
-		[5.6, 0.0, 21.1, 28.9, 44.4],	// 1: Arabs opinions	
-		[2.6, 9.9, 15.5, 40.1, 32.0]	// 2: General population opinions
-	]
-}
