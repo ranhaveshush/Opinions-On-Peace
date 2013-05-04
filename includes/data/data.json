@@ -1,0 +1,45 @@
+{
+	"name": "Peace",
+	"size": 10000,
+	"month": 0,
+	"year": 2012,
+	"children": [
+		{
+	 		"name": 0,
+	 		"size": 20000,
+	 		"color": "blue",
+	 		"children": [
+	 			{"name": 0, "opinion": 3.0},
+	 			{"name": 1, "opinion": 10.7},
+	 			{"name": 2, "opinion": 14.5},
+	 			{"name": 3, "opinion": 42.1},
+	 			{"name": 4, "opinion": 29.8}
+	 		]
+	 	},
+	 	{
+	 		"name": 1,
+	 		"size": 20000,
+	 		"color": "green",
+	 		"children": [
+	 			{"name": 0, "opinion": 5.6},
+	 			{"name": 1, "opinion": 0.0},
+	 			{"name": 2, "opinion": 21.1},
+	 			{"name": 3, "opinion": 28.9},
+	 			{"name": 4, "opinion": 44.4}
+	 		]
+	 	},
+	 	{
+	 		"name": 2,
+	 		"size": 20000,
+	 		"color": "orange",
+	 		"children": [
+	 			{"name": 0, "opinion": 2.6},
+	 			{"name": 1, "opinion": 9.9},
+	 			{"name": 2, "opinion": 15.5},
+	 			{"name": 3, "opinion": 40.1},
+	 			{"name": 4, "opinion": 32.0}
+	 		]
+	 	}
+ 	]
+
+}
