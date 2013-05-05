@@ -1,4 +1,4 @@
-var colors = []
+var colors = [
 	"blue",
 	"green",
 	"orange"

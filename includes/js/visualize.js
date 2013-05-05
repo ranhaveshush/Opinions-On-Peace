@@ -127,23 +127,12 @@ svg.append("image")
       .data(nodes)
     .enter().append("g")
     .attr("fill",function(d,i) {
-		
-		/*var j = Math.floor((i-1)/6);
-			if(j == 0)
-			return "#85D8FF";
-			else if(j == 1)
-			return "green";
-			else if(j == 2)
-			return "orange";*/	
-		
-		switch(d.color){
-		case "blue":
-			return "#85D8FF";
-		case "green":
-			return "green";
-		case "orange":
-			return "orange";
-		}})
+      var node = d;
+      while (node.depth > 1) {
+        node = node.parent;
+      }
+		  return (node.depth != 0) ? colors[node.name] : null;
+		})
     .attr("class", "node")
     .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
