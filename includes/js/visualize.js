@@ -1,4 +1,7 @@
 ﻿var diameter = 760;
+var range = d3.scale.linear()
+        .domain([0, 100])
+        .range([0, 60]);
 
 var tree = d3.layout.tree()
     .size([360, diameter / 2 -120])
@@ -46,21 +49,21 @@ svg.append("circle")				 /*iner	*/
 	.attr("stroke","gray")
 	.attr("stroke-width","1");	
 		
-svg.append("circle")				/*jews circle*/
+svg.append("circle")				/*jews*/
 	.attr("cx",-290)
 	.attr("cy",270)
 	.attr("fill","#85D8FF")
 	.attr("r",15 )
 	.attr("stroke","white")
 	.attr("stroke-width","1");
-svg.append("circle")				 /*arabs circle*/
+svg.append("circle")				 /*arabs*/
 	.attr("cx",-290)
 	.attr("cy",315)
 	.attr("fill","green")
 	.attr("r",15 )
 	.attr("stroke","white")
 	.attr("stroke-width","1");
-svg.append("circle")					/*General population circle*/
+svg.append("circle")					/*General population*/
 	.attr("cx",-290)
 	.attr("cy",360)
 	.attr("fill","orange")
@@ -124,34 +127,23 @@ svg.append("image")
       .data(nodes)
     .enter().append("g")
     .attr("fill",function(d,i) {
-		var j = Math.floor((i-1)/6);
+		
+		/*var j = Math.floor((i-1)/6);
 			if(j == 0)
 			return "#85D8FF";
 			else if(j == 1)
 			return "green";
 			else if(j == 2)
-			return "orange";	
-		/*
+			return "orange";*/	
+		
 		switch(d.color){
 		case "blue":
 			return "#85D8FF";
-		break;
 		case "green":
 			return "green";
-		break;
 		case "orange":
 			return "orange";
-		break;
-		default:
-			var j = Math.floor((i-1)/6);
-			if(j == 0)
-			return "#85D8FF";
-			else if(j == 1)
-			return "green";
-			else if(j == 2)
-			return "orange";		
-		}*/
-		})
+		}})
     .attr("class", "node")
     .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
@@ -160,16 +152,20 @@ svg.append("image")
 		if(d.size == 20)
 			return 20;
 			
-	   return d.opinion;});
+	   return range(d.opinion);});
 
-/*	  
+
   node.append("text")
       .attr("dy", ".31em")
 	  .attr("fill", "#ffffff")
       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-      .text(function(d) { return d.name; });
-	*/ 
+      .attr("transform", function(d) { return d.x < 180 ? "translate(28)" : "rotate(180)translate(-28)"; })
+      .text(function(d,i) { 
+	  if(d.children[i].name == "0")
+	  return;
+	  return opinion[d.name]; 
+	  });
+	 
 });
 
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
