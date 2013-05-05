@@ -4,7 +4,7 @@ var nationality = [
 	"عامة السكان"
 ];
 
-var opinion = [
+var opinions = [
 	"لا أعرف / رفض الإجابة",
 	"لا أعرف",
 	"يعارض بشدة",

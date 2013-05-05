@@ -1,12 +1,12 @@
 {
-	"name": "Peace",
-	"size": 10000,
+	//"name": "Peace",
+	//"size": 0,
 	"month": 0,
 	"year": 2012,
 	"children": [
 		{
 	 		"name": 0,
-	 		"size": 20000,
+	 		//"size": 20,
 	 		"children": [
 	 			{"name": 0, "opinion": 3.0},
 	 			{"name": 1, "opinion": 10.7},
@@ -17,7 +17,7 @@
 	 	},
 	 	{
 	 		"name": 1,
-	 		"size": 20000,
+	 		//"size": 20,
 	 		"children": [
 	 			{"name": 0, "opinion": 5.6},
 	 			{"name": 1, "opinion": 11.0},
@@ -28,7 +28,7 @@
 	 	},
 	 	{
 	 		"name": 2,
-	 		"size": 20000,
+	 		//"size": 20,
 	 		"children": [
 	 			{"name": 0, "opinion": 2.6},
 	 			{"name": 1, "opinion": 9.9},
