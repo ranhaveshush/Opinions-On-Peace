@@ -1,6 +1,8 @@
 function randomDataset() {
 	var initYear = 2004;
-	var dataset = [];
+	var dataset = {};
+	dataset.name = 0;
+	dataset.children = [];
 
 	for (var i=0; i<10; ++i) {
 		for (var j=0; j<12; ++j) {
@@ -41,7 +43,7 @@ function randomDataset() {
 					- datum.children[k].children[2].opinionIndex
 					- datum.children[k].children[3].opinionIndex;
 			}
-			dataset.push(datum);
+			dataset.children.push(datum);
 		}
 	}
 	return dataset;
