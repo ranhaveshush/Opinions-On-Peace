@@ -114,7 +114,8 @@ var arcInner = d3.svg.arc()
 
 d3.json("flare.json", function(error, root) {
   var root = randomDataset(); // FIXME: replace with mushon dataset.
-  var data = filterDataByNationalityOpinion(root, nationalityIndex, opinionIndex);
+  /*var data = filterDataByNationalityOpinion(root, nationalityIndex, opinionIndex);*/
+  var data = filterDataByDate(root, month, year);
   
   var pathOuter = svg.datum(data).selectAll("path.outer")
       .data(partitionOuter.nodes)
@@ -170,16 +171,27 @@ function filterDataByNationalityOpinion(data, notionalityIndex, opinionIndex) {
   var dataset = {};
   dataset.children = [];
   for (var i=0; i<data.length; ++i) {
-      dataset.children.push( data[i].nationalities[notionalityIndex].opinions[opinionIndex] );
+    dataset.children.push( data[i].nationalities[notionalityIndex].opinions[opinionIndex] );
   }
   return dataset;
 }
 
-// filters the dataset to opinions array
+// filters the dataset to specific month/year data
 function filterDataByDate(data, month, year) {
   var dataset = {};
   dataset.children = [];
-  // FIXME: continue from here.
+  for (var i=0; i<data.length; ++i) {
+    if (data[i].month == month && data[i].year == year) {
+      var nationalities = data[i].nationalities;
+      for (var j=0; j<nationalities.length; ++j) {
+        var opinions = nationalities[j].opinions;
+        for (var k=0; k<opinions.length; ++k) {
+          dataset.children.push( nationalities[j].opinions[k] );
+        }
+      }
+      return dataset;
+    }
+  }
   return dataset;
 }
 
