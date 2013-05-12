@@ -27,17 +27,17 @@ form {
 // the requested ntionalitiy index
 var nationalityIndex = 0;
 // the requested opinion index
-var opinionIndex = 0;
+var opinionIndex = 3;
 // the requested month
 var month = 0;
 // the requested year
 var year = 2004;
 // the const max opinion value
-var maxOpinionValue = 10; // FIXME: change 100 to real max opinion value.
+var maxOpinionValue = 100; // FIXME: change to real max opinion value.
 
 var width = 960,
     height = 700,
-    radius = Math.min(width, height) * .62,
+    radius = Math.min(width, height) * .5,
     color = d3.scale.category20c();
 
 var svg = d3.select("body").append("svg")
@@ -71,7 +71,7 @@ var arcOuter = d3.svg.arc()
       return (d.depth != 1) ? 0 : Math.sqrt(d.y);
     })
     .outerRadius(function(d) {
-      return (d.depth != 1) ? 0 : Math.sqrt(d.y + d.dy*scaleOpinion(d.children[nationalityIndex].children[opinionIndex].opinion));
+      return (d.depth != 1) ? 0 : Math.sqrt(d.y + d.dy*scaleOpinion(d.opinionValue));
     });
 
 var arcInner = d3.svg.arc()
@@ -114,7 +114,10 @@ var arcInner = d3.svg.arc()
 
 d3.json("flare.json", function(error, root) {
   var root = randomDataset(); // FIXME: replace with mushon dataset.
-  var pathOuter = svg.datum(root).selectAll("path.outer")
+  /*var data = filterDataByNationalityOpinion(root, nationalityIndex, opinionIndex);*/
+  var data = filterDataByDate(root, month, year);
+  
+  var pathOuter = svg.datum(data).selectAll("path.outer")
       .data(partitionOuter.nodes)
     .enter().append("path")
       .attr("class", "outer")
@@ -161,6 +164,35 @@ d3.json("flare.json", function(error, root) {
 function stash(d) {
   d.x0 = d.x;
   d.dx0 = d.dx;
+}
+
+// filters the dataset to opinions array
+function filterDataByNationalityOpinion(data, notionalityIndex, opinionIndex) {
+  var dataset = {};
+  dataset.children = [];
+  for (var i=0; i<data.length; ++i) {
+    dataset.children.push( data[i].nationalities[notionalityIndex].opinions[opinionIndex] );
+  }
+  return dataset;
+}
+
+// filters the dataset to specific month/year data
+function filterDataByDate(data, month, year) {
+  var dataset = {};
+  dataset.children = [];
+  for (var i=0; i<data.length; ++i) {
+    if (data[i].month == month && data[i].year == year) {
+      var nationalities = data[i].nationalities;
+      for (var j=0; j<nationalities.length; ++j) {
+        var opinions = nationalities[j].opinions;
+        for (var k=0; k<opinions.length; ++k) {
+          dataset.children.push( nationalities[j].opinions[k] );
+        }
+      }
+      return dataset;
+    }
+  }
+  return dataset;
 }
 
 /*// Interpolate the arcs in data space.
