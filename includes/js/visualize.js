@@ -2,7 +2,12 @@ var margin = {top: 50, right: 40, bottom: 20, left: 40},
     width = 1200 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-var numOfMonthsToDisplay = 8;
+var _numOfMonthsToDisplay = 8;
+
+var _startMonth,
+    _startYear,
+    _endMonth,
+    _endYear;
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], 0.5);
@@ -72,11 +77,49 @@ d3.json("includes/data/data.json", function(error, data) {
 
 });
 
+d3.json("includes/data/events.json", function(error, events) {
+
+  events = events.filter(isEventInDatesRange);
+
+  event.selectAll(".event")
+        .data(events)
+    .enter().append("circle")
+        .attr("r", 5)
+        .attr("cx", function(d) { return x(d.month); })
+        .attr("cy", function(d) { return 0; })
+        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div .html(formatTime(d.date) + "<br/>"  + d.close)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+}
+
 function getChildren(datum) {
     var nationalitiesIndex = datum.nationalitiesIndex;
     return (nationalitiesIndex == 0) ? datum.children : datum.children[nationalitiesIndex].children;
 }
 
+// FIXME: needed to get filter args
 function filterData(data) {
-    return data.slice(data.length - numOfMonthsToDisplay);
+    var months = data.slice(data.length - _numOfMonthsToDisplay);
+    _startMonth = months[0].month;
+    _startYear = months[0].year;
+    _endMonth = months[_numOfMonthsToDisplay - 1].month;
+    _endMonth = months[_numOfMonthsToDisplay - 1].year;
+
+    return months;
+}
+
+function isEventInDatesRange(event, index, array) {
+    return (_startMonth <= event.month && _startYear <= event.yeaer) &&
+            (event.month <= _endMonth && event.year <= _endYear);
 }
