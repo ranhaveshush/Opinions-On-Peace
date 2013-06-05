@@ -45,10 +45,10 @@ var opinions = [
 ];
 
 var colors = [
-	"#00FF04",	
+	"#00FF04",
 	"#99FF00",
 	"#D9FF00",
-	"#FFCC00",	
+	"#FFCC00",
 	"#FF8800",
 	"#FF6600",
 	"#FF1900"
