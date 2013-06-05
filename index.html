@@ -3,12 +3,19 @@
   <head>
     <meta charset="utf-8">
     <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
       body {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        width: 1200px;
-        height: 600px;
         position: relative;
         background-color: #eee;
+      }
+      #wrapper {
+        width: 1200px;
+        height: 600px;
+        margin: 0px auto;
       }
       .axis path,
       .axis line {
@@ -24,6 +31,7 @@
   </head>
 
   <body>
+    <div id="wrapper"></div>
     <script src="includes/js/d3/d3.v3.min.js"></script>
     <script src="includes/js/lang-heb.js"></script>
     <script src="includes/js/visualize.js"></script>
