@@ -21,6 +21,7 @@ form {
   <label><input type="radio" name="mode" value="count" checked> Count</label>
 </form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="lang-eng.js"></script>
 <script src="randomData.js"></script>
 <script>
 
@@ -57,7 +58,7 @@ var partitionOuter = d3.layout.partition()
 
 var partitionInner = d3.layout.partition()
     .sort(null)
-    .size([2 * Math.PI, (radius*0.3) * (radius*0.3)])
+    .size([2 * Math.PI, (radius*0.5) * (radius*0.5)])
     .value(function(d, i) { return 1; });
 
 var arcOuter = d3.svg.arc()
@@ -76,48 +77,49 @@ var arcOuter = d3.svg.arc()
 
 var arcInner = d3.svg.arc()
     .startAngle(function(d) {
-      if (d.depth == 3) {
-        var ancestor = d.parent.parent;
-        if (ancestor.month == month && ancestor.year == year) {
-          return d.x;
-        }
+      if (d.depth == 1) {
+        return 100;
+      } else if (d.depth == 2) {
+        return d.x;
+      } else {
+        return 0;
       }
-      return 0;
     })
     .endAngle(function(d) {
-      if (d.depth == 3) {
-        var ancestor = d.parent.parent;
-        if (ancestor.month == month && ancestor.year == year) {
-          return d.x + d.dx;
-        }
+      if (d.depth == 1) {
+        return 100;
+      } else if (d.depth == 2) {
+        return d.x + d.dx;
+      } else {
+        return 0;
       }
-      return 0;
     })
     .innerRadius(function(d) {
-      if (d.depth == 3) {
-        var ancestor = d.parent.parent;
-        if (ancestor.month == month && ancestor.year == year) {
-          return Math.sqrt(d.y);
-        }
+      if (d.depth == 1) {
+        return 100;
+      } else if (d.depth == 2) {
+        return Math.sqrt(d.y);
+      } else {
+        return 0;
       }
-      return 0;
     })
     .outerRadius(function(d) {
-      if (d.depth == 3) {
-        var ancestor = d.parent.parent;
-        if (ancestor.month == month && ancestor.year == year) {
-          return Math.sqrt(d.y + d.dy);
-        }
+      if (d.depth == 1) {
+        return 100;
+      } else if (d.depth == 2) {
+        return Math.sqrt(d.y + d.dy*scaleOpinion(d.opinionValue));
+      } else {
+        return 0;
       }
-      return 0;
     });
 
 d3.json("flare.json", function(error, root) {
   var root = randomDataset(); // FIXME: replace with mushon dataset.
-  /*var data = filterDataByNationalityOpinion(root, nationalityIndex, opinionIndex);*/
-  var data = filterDataByDate(root, month, year);
+
+  var dataNationalityOpinion = filterDataByNationalityOpinion(root, nationalityIndex, opinionIndex);
+  var dataDate = filterDataByDate(root, month, year);
   
-  var pathOuter = svg.datum(data).selectAll("path.outer")
+  var pathOuter = svg.datum(dataNationalityOpinion).selectAll("path.outer")
       .data(partitionOuter.nodes)
     .enter().append("path")
       .attr("class", "outer")
@@ -131,7 +133,7 @@ d3.json("flare.json", function(error, root) {
       .style("fill-rule", "evenodd")
       .each(stash);
 
-  var pathInner = svg.datum(root).selectAll("path.inner")
+  var pathInner = svg.datum(dataDate).selectAll("path.inner")
       .data(partitionInner.nodes)
     .enter().append("path")
       .attr("class", "inner")
@@ -180,13 +182,18 @@ function filterDataByNationalityOpinion(data, notionalityIndex, opinionIndex) {
 function filterDataByDate(data, month, year) {
   var dataset = {};
   dataset.children = [];
+  console.log(data[0].nationalities[0].opinions.length);
+  for (var l=0; l<data[0].nationalities[0].opinions.length; ++l) {
+    dataset.children[l] = { opinionIndex: l, children: [] };
+  }
   for (var i=0; i<data.length; ++i) {
+    // finds the right date (month/year)
     if (data[i].month == month && data[i].year == year) {
       var nationalities = data[i].nationalities;
       for (var j=0; j<nationalities.length; ++j) {
         var opinions = nationalities[j].opinions;
         for (var k=0; k<opinions.length; ++k) {
-          dataset.children.push( nationalities[j].opinions[k] );
+          dataset.children[k].children.push( nationalities[j].opinions[k] );
         }
       }
       return dataset;
