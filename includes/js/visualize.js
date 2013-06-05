@@ -1,10 +1,10 @@
 
-var margin = {top: 20, right: 100, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 50, right: 40, bottom: 20, left: 40},
+    width = 1000 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .5);
+	.rangeRoundBands([0, width], .5);
 
 var y = d3.scale.linear()
     .domain([0, 100])
@@ -26,36 +26,30 @@ d3.json("includes/data/data.json", function(error, data) {
 	var childrens;
     data.forEach(function(d,i) {
 		switch(d.nationalitiesIndex){
-		case 0:
-		console.log(d.children);
+		case 0:	
 		childrens = d.children;
 		break;
-		case 1:
-		console.log(d.children[1].children);
+		case 1:	
 		childrens = d.children[1].children;
 		break;
-		case 2:
-		console.log(d.children[2].children);
+		case 2:	
 		childrens = d.children[2].children;
 		break;
 		}
-		
+				
         var cumulateHeight = 0;
         childrens.forEach(function(d,i) {
-		console.log(d.opinionValue);		
 		    d.y0 = cumulateHeight;
             d.height = y(d.opinionValue);
             cumulateHeight += d.height;
-		  //  console.log(cumulateHeight);
 		 
-        })
+        })		
 		
-		//console.log(i+" "+cumulateHeight);
     });
-x.domain(data.map(function(d) { 
 
-return d.Month; 
-}));
+	x.domain(data.map(function(d,i) { 	
+		return i; 
+	}));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -67,25 +61,22 @@ return d.Month;
 	  .enter()
 	.append("g")
     .attr("class", "month")
-	.attr("transform", function(d,i) { return "translate(" + x(d.Month) + ",0)"; });
-	//.attr("transform", function(d,i){return x(i*100);},0);
+	.attr("transform", function(d,i) {
+	return "translate(" + x(i) + ",0)"; });
 		  
 
   month.selectAll("rect")
       .data(function(d) { 
 	  var childrens;
-	 // console.log(d.opinionsIndex);
+		
 	  switch(d.nationalitiesIndex){
-		case 0:
-	//	console.log(d.children.length);
+		case 0:	
 		childrens = d.children;
 		break;		
-		case 1:
-	//	console.log(d.children[1].children.length);
+		case 1:	
 		childrens = d.children[1].children;
 		break;
-		case 2:
-	//	console.log(d.children[2].children.length);
+		case 2:	
 		childrens = d.children[2].children;
 		break;
 		}
