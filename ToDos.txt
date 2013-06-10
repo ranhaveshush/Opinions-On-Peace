@@ -1,0 +1,20 @@
+TODOs:
+
+1. Title of the VIS. "השפעת אירועים על דעת הקהל בנוגע לשלום"
+2. Subtitle of the VIS.
+3. Move the x axis to the top of the VIS.
+4. Move the opinons index to the bottom of the VIS with only 2 opinions with gradient.
+5. Upside down the bargraph sections.
+6. Resize the radius of the events circles.
+7. 	Two kinds of tool tips on top of the Title and Subtitle.
+	OpinionsTip:
+	1. The date of the column.
+	2. Percentage of each opinion.
+
+	EventsTip:
+	1. Event name.
+	2. The date of the event.
+	3. Event details.
+	4. Pic.
+8. Change the VIS of the arrows buttons.
+9. About us.
