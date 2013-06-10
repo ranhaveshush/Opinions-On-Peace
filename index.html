@@ -6,6 +6,7 @@
       * {
         padding: 0px;
         margin: 0px;
+        border: 0px;
       }
       body {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -14,19 +15,54 @@
       }
       #wrapper {
         width: 1200px;
-        height: 600px;
+        height: 650px;
         margin: 0px auto;
       }
+      #title {
+        width: 1200px;
+        height: 100px;
+        background-color: blue;
+        display: block;
+      }
+      #subtitle {
+        width: 1200px;
+        height: 100px;
+        background-color: green;
+        display: block;
+      }
+      #leftBtn, #rightBtn {
+        width: 50px;
+        height: 400px;
+        background-color: grey;
+        display: inline-block;
+      }
+      #bargraph {
+        position: relative;
+        width: 1090px;
+        height: 400px;
+        overflow: hidden;
+        display: inline-block;
+      }
+      #bargraph svg {
+        position: absolute;
+      }
+      #colormap {
+        width: 1200px;
+        height: 50px;
+        background-color: red;
+        display: block;
+      }
       .question {
-        border: 1px 0px solid black;
+        border: 1px solid black;
       }
       .opinion {
-        border: 1px 0px solid black;
+        border: 1px solid black;
       }
       .axis path,
       .axis line {
         fill: none;
         stroke: #000;
+        stroke-width: 2;
         shape-rendering: crispEdges;
       }
       .month {
@@ -43,9 +79,24 @@
   </head>
 
   <body>
-    <div id="wrapper"></div>
+    <div id="wrapper">
+      <header>
+        <section id="title">
+          <span></span>
+        </section>
+        <section id="subtitle">
+          <span></span>
+        </section>
+      </header>
+      <section id="leftBtn"></section>
+      <section id="bargraph"></section>
+      <section id="rightBtn"></section>
+      <footer id="colormap"></footer>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
     <script src="includes/js/d3/d3.v3.min.js"></script>
     <script src="includes/js/lang-heb.js"></script>
     <script src="includes/js/visualize.js"></script>
+    <script src="includes/js/scripts.js"></script>
   </body>
 </html>

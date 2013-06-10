@@ -1,12 +1,8 @@
 var _margin = {top: 50, right: 40, bottom: 20, left: 40},
     width = 1200*4 - _margin.left - _margin.right,
-    height = 600 - _margin.top - _margin.bottom;
+    height = 400 - _margin.top - _margin.bottom;
 
-// Check if this vars have to be global
-var _yTimeline = height;
-
-/*var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], 0.2);*/
+var _yTimeline = -15;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -17,9 +13,10 @@ var y = d3.scale.linear()
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .ticks(d3.time.years, 1)
+    .orient("top");
 
-var svg = d3.select("#wrapper").append("svg")
+var svg = d3.select("#bargraph").append("svg")
     .attr("width", width + _margin.left + _margin.right)
     .attr("height", height + _margin.top + _margin.bottom)
   .append("g")
@@ -29,24 +26,25 @@ d3.json("includes/data/data.json", function(error, data) {
 
   x.domain(getDatesRange(data));
 
-  var gapPercentage = 0.2;
+  var gapPercentage = 0.5;
   var barWidth = Math.floor( (width / data.length) * (1-gapPercentage) );
 
   data.forEach(function(d) {
       d.Date = new Date(d.year, d.month, 15);
       var children = getChildren(d);
       var cumulateHeight = 0;
-      children.forEach(function(d) {
-          d.width = barWidth;
-          d.y0 = cumulateHeight;
-          d.height = y(d.opinionValue);
-          cumulateHeight += d.height;
-      });
+      for (var i=children.length-1; i >= 0; --i) {
+          opinion = children[i];
+          opinion.width = barWidth;
+          opinion.y0 = cumulateHeight;
+          opinion.height = y(opinion.opinionValue);
+          cumulateHeight += opinion.height;
+      }
   });
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + _yTimeline + ")")
+      .attr("transform", "translate(0, " + _yTimeline + ")")
       .call(xAxis);
 
   var month = svg.selectAll(".month")
@@ -71,8 +69,8 @@ d3.json("includes/data/data.json", function(error, data) {
       .enter().append("circle")
         .attr("class", "event")
         .attr("r", 5)
-        .attr("cx", function(d) { d.Date = new Date(d.year, d.month, d.date); console.log(d.Date); return x(d.Date); })
-        .attr("cy", function(d) { return 100; })
+        .attr("cx", function(d) { d.Date = new Date(d.year, d.month, d.date); return x(d.Date); })
+        .attr("cy", function(d) { return _yTimeline; })
         .on("mouseover", function(d) {
             div.transition()
                 .duration(200)
@@ -99,6 +97,8 @@ function getDatesRange(data) {
     var firstEvent = data[0];
     var minDate = new Date(firstEvent.year, firstEvent.month-1, (firstEvent.date) ? firstEvent.date : 1);
     var lastEvent = data[data.length-1];
-    var maxDate = new Date(lastEvent.year, lastEvent.month-1, (lastEvent.date) ? lastEvent.date : 1);
+    var maxDate = new Date(lastEvent.year, lastEvent.month, (lastEvent.date) ? lastEvent.date : 1);
+    console.log("nimDate=" + minDate);
+    console.log("maxDate=" + maxDate);
     return [minDate, maxDate];
 }
