@@ -16,7 +16,7 @@ var xAxis = d3.svg.axis()
     .ticks(d3.time.years, 1)
     .orient("top");
 
-var svg = d3.select("#bargraph").append("svg")
+var svg = d3.select("#data-vis").append("svg")
     .attr("width", width + _margin.left + _margin.right)
     .attr("height", height + _margin.top + _margin.bottom)
   .append("g")
