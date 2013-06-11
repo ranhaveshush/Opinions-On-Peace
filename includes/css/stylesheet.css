@@ -1,0 +1,110 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  background-color: #353535;
+}
+#wrapper, #title, #subtitle, #event-tooltip, #opinions-tooltip, #colors-map {
+  width: 1200px;
+}
+#wrapper {
+  position: relative;
+  height: 650px;
+  margin: 0px auto;
+}
+#title, #subtitle {
+  display: block;
+  color: white;
+  text-align: center;
+  background-color: yellow;
+}
+#title {
+  height: 50px;
+}
+#subtitle {
+  height: 150px;
+}
+#event-tooltip, #opinions-tooltip {
+  position: absolute;
+  top: 0px;
+  height: 200px;
+  z-index: 10;
+  color: white;
+  background-color: black;
+  display: none;
+}
+#event-tooltip #title, #event-tooltip #details {
+  position: absolute;
+  right: 0px;
+  width: 500px;
+}
+#event-tooltip #title {
+  height: 50px;
+  background-color: red;
+}
+#event-tooltip #details {
+  top:50px;
+  height: 150px;
+  text-align: right;
+  background-color: green;
+}
+#event-tooltip img {
+  position: absolute;
+  left: 0px;
+  width: 700px;
+  height: 200px;
+  background-color: blue;
+}
+#opinions-tooltip #title {
+  height: 50px;
+  background-color: red;
+}
+#opinions-tooltip #opinions {
+  top: 50px;
+  height: 150px;
+  background-color: blue;
+}
+#scroll-old, #scroll-new, #data-vis {
+  height: 400px;
+  display: inline-block;
+}
+#scroll-old, #scroll-new {
+  width: 50px;
+  cursor: pointer;
+  background-color: grey;
+}
+#data-vis {
+  position: relative;
+  width: 1092px;
+  overflow: hidden;
+}
+#data-vis svg {
+  position: absolute;
+  right: 0px;
+}
+#colors-map {
+  height: 50px;
+  display: block;
+  background-color: yellow;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  shape-rendering: crispEdges;
+}
+.month {
+
+}
+.event {
+  fill: yellow;
+}
+rect {
+  fill: #00FF00;
+  fill-opacity: 0.5;
+}

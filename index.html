@@ -1,92 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+    <title>Peace</title>
     <meta charset="utf-8">
-    <style>
-      * {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-      }
-      body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        position: relative;
-        background-color: #353535;
-      }
-      #wrapper, #title, #subtitle, #event-tooltip, #opinions-tooltip, #colors-map {
-        width: 1200px;
-      }
-      #wrapper {
-        position: relative;
-        height: 650px;
-        margin: 0px auto;
-      }
-      #title, #subtitle {
-        height: 100px;
-        display: block;
-        background-color: yellow;
-      }
-      #event-tooltip, #opinions-tooltip {
-        position: absolute;
-        top: 0px;
-        height: 200px;
-        z-index: 10;
-        background-color: black;
-      }
-      #scroll-old, #scroll-new, #data-vis {
-        height: 400px;
-        display: inline-block;
-      }
-      #scroll-old, #scroll-new {
-        width: 50px;
-        cursor: pointer;
-        background-color: grey;
-      }
-      #data-vis {
-        position: relative;
-        width: 1092px;
-        overflow: hidden;
-      }
-      #data-vis svg {
-        position: absolute;
-        right: 0px;
-      }
-      #colors-map {
-        height: 50px;
-        display: block;
-        background-color: yellow;
-      }
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: #000;
-        stroke-width: 2;
-        shape-rendering: crispEdges;
-      }
-      .month {
-
-      }
-      .event {
-        fill: yellow;
-      }
-      rect {
-        fill: #00FF00;
-        fill-opacity: 0.5;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">
   </head>
 
   <body>
     <div id="wrapper">
       <header>
-        <section id="title">
-          <span></span>
-        </section>
+        <section id="title"><h1></h1></section>
         <section id="subtitle">
-          <span></span>
+          <h3></h3>
+          <h2></h2>
         </section>
-        <section id="event-tooltip"></section>
-        <section id="opinions-tooltip"></section>
+        <section id="event-tooltip">
+          <section id="title"><h2></h2></section>
+          <section id="details"><p></p></section>
+          <img src=""/>
+        </section>
+        <section id="opinions-tooltip">
+          <section id="title"><h2></h2></section>
+          <section id="opinions"></section>
+        </section>
       </header>
       <section id="scroll-old"></section>
       <section id="data-vis"></section>

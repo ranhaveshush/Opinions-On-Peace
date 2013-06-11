@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-	$("body").delegate('[id^="scroll"]', "click", function() {
+	$('#title h1').text(title);
+	$('#subtitle h3').text(subtitle);
+	$('#subtitle h2').text(questions[1]);
+
+	$('body').delegate('[id^="scroll"]', "click", function() {
 		var scrollDelta = 500;
 		var id = $(this).attr("id");
 		var svg = $("#data-vis svg");

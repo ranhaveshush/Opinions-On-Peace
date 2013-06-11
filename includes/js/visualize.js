@@ -3,6 +3,8 @@ var _margin = {top: 50, right: 40, bottom: 20, left: 40},
     height = 400 - _margin.top - _margin.bottom;
 
 var _yTimeline = -15;
+var _prevMonthIndex = -1;
+var _prevEventIndex = -1;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -47,11 +49,27 @@ d3.json("includes/data/data.json", function(error, data) {
       .attr("transform", "translate(0, " + _yTimeline + ")")
       .call(xAxis);
 
-  var month = svg.selectAll(".month")
+  var monthsContainer = svg.append("g")
+      .attr("class", "months");
+
+  var month = monthsContainer.selectAll(".month")
       .data(data)
     .enter().append("g")
       .attr("class", "month")
-      .attr("transform", function(d) { return "translate(" + x(d.Date) + ",0)"; });
+      .attr("transform", function(d) { return "translate(" + x(d.Date) + ",0)"; })
+      .on("click", function(d) {
+          $('#options-tooltip #title h2').text(d.Date);
+          var children = getChildren(d);
+          children.forEach(function() {
+            $('#opinions-tooltip #options').text();
+          });
+          if (eventIndex === _prevMonthIndex) {
+            $('#options-tooltip').toggle();
+          } else {
+            $('#opinions-tooltip').show();
+          }
+          _prevMonthIndex = eventIndex;
+      });
 
   month.selectAll("rect")
       .data(function(d) { return getChildren(d); })
@@ -62,27 +80,20 @@ d3.json("includes/data/data.json", function(error, data) {
       .attr("percentage", function(d) { return d.opinionValue })
       .style("fill", function(d) { return colors[d.opinionIndex]; });
 
-  d3.json("includes/data/events.json", function(error, events) {
+  d3.json("includes/data/events.json", function(error, data) {
 
-    svg.selectAll(".event")
-        .data(events)
+    var eventsContainer = svg.append("g")
+        .attr("class", "events");
+
+    eventsContainer.selectAll(".event")
+        .data(data)
       .enter().append("circle")
         .attr("class", "event")
         .attr("r", 5)
         .attr("cx", function(d) { d.Date = new Date(d.year, d.month, d.date); return x(d.Date); })
         .attr("cy", function(d) { return _yTimeline; })
-        .on("mouseover", function(d) {
-            div.transition()
-                .duration(200)
-                .style("opacity", .9);
-            div .html(formatTime(d.date) + "<br/>"  + d.close)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-            })
-        .on("mouseout", function(d) {
-            div.transition()
-                .duration(500)
-                .style("opacity", 0);
+        .on("click", function(d) {
+            toggleEventTooltip(d.eventIndex);
         });
   });
 
@@ -101,4 +112,21 @@ function getDatesRange(data) {
     console.log("nimDate=" + minDate);
     console.log("maxDate=" + maxDate);
     return [minDate, maxDate];
+}
+
+function toggleOpinionsTooltip() {
+
+}
+
+function toggleEventTooltip(eventIndex) {
+    var eventName = events[eventIndex];
+    $('#event-tooltip #title h2').text(eventName);
+    $('#event-tooltip #details p').text("דגכלחדגךכד דחגכךלחדגך חדלךכחדג חדלכךדחג דחלכךדג");
+    $('#event-tooltip img').attr("src", "includes/img/event_" + eventIndex + ".jpg");
+    if (eventIndex === _prevEventIndex) {
+      $('#event-tooltip').toggle();
+    } else {
+      $('#event-tooltip').show();
+    }
+    _prevEventIndex = eventIndex;
 }
