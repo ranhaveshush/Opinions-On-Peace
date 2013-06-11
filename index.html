@@ -21,35 +21,37 @@
       #title {
         width: 1200px;
         height: 100px;
-        background-color: blue;
+        border: 2px solid blue;
         display: block;
       }
       #subtitle {
         width: 1200px;
         height: 100px;
-        background-color: green;
+        border: 2px solid green;
         display: block;
       }
-      #leftBtn, #rightBtn {
+      #scrollLeft, #scrollRight {
         width: 50px;
         height: 400px;
-        background-color: grey;
+        border: 2px solid grey;
         display: inline-block;
+        cursor: pointer;
       }
       #bargraph {
         position: relative;
-        width: 1090px;
+        width: 1084px;
         height: 400px;
         overflow: hidden;
         display: inline-block;
       }
       #bargraph svg {
         position: absolute;
+        right: 0px;
       }
       #colormap {
         width: 1200px;
         height: 50px;
-        background-color: red;
+        border: 2px solid red;
         display: block;
       }
       .question {
@@ -88,12 +90,12 @@
           <span></span>
         </section>
       </header>
-      <section id="leftBtn"></section>
+      <section id="scrollLeft"></section>
       <section id="bargraph"></section>
-      <section id="rightBtn"></section>
+      <section id="scrollRight"></section>
       <footer id="colormap"></footer>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="includes/js/d3/d3.v3.min.js"></script>
     <script src="includes/js/lang-heb.js"></script>
     <script src="includes/js/visualize.js"></script>

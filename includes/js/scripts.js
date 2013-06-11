@@ -1,6 +1,18 @@
 $(document).ready(function() {
-	$("#bargraph svg").animate({right: "100px"}, 500);
-	$("#bargraph svg").animate({right: "200px"}, 1000);
-	$("#bargraph svg").animate({right: "300px"}, 2000);
-	$("#bargraph svg").animate({right: "400px"}, 3000);
+
+	$("body").delegate('[id^="scroll"]', "click", function() {
+		var scrollDelta = 500;
+		var id = $(this).attr("id");
+		var svg = $("#bargraph svg");
+		var right = svg.css("right");
+		right = right.substring(0, right.length-2);
+		right = parseInt(right, 10);
+		if (id === "scrollLeft" && right >= -3685) {
+			right -= scrollDelta;
+		} else if (id === "scrollRight" && right < 0) {
+			right += scrollDelta;
+		}
+		svg.animate({right: right+"px"}, 1000);
+	});
+
 });
