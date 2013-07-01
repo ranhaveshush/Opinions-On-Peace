@@ -6,7 +6,7 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
-  background-color: #353535;
+  background-color: white;
 }
 #wrapper, #title, #subtitle, #event-tooltip, #opinions-tooltip, #colors-map {
   width: 1200px;
@@ -63,9 +63,14 @@ body {
   height: 50px;
   background-color: red;
 }
+#opinions-tooltip #question {
+  top: 100px;
+  height: 50px;
+  background-color: green;
+}
 #opinions-tooltip #opinions {
-  top: 50px;
-  height: 150px;
+  top: 100px;
+  height: 100px;
   background-color: blue;
 }
 #scroll-old, #scroll-new, #data-vis {
@@ -103,6 +108,8 @@ body {
 }
 .event {
   fill: yellow;
+}
+.seletedMonth {
 }
 rect {
   fill: #00FF00;

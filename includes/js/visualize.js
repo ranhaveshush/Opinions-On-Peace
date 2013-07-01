@@ -3,7 +3,7 @@ var _margin = {top: 50, right: 40, bottom: 20, left: 40},
     height = 400 - _margin.top - _margin.bottom;
 
 var _yTimeline = -15;
-var _prevMonthIndex = -1;
+var _prevMonth;
 var _prevEventIndex = -1;
 
 var x = d3.time.scale()
@@ -32,16 +32,15 @@ d3.json("includes/data/data.json", function(error, data) {
   var barWidth = Math.floor( (width / data.length) * (1-gapPercentage) );
 
   data.forEach(function(d) {
-      d.Date = new Date(d.year, d.month, 15);
+      d.Date = new Date(d.year, d.month-1, 15);
       var children = getChildren(d);
       var cumulateHeight = 0;
-      for (var i=children.length-1; i >= 0; --i) {
-          opinion = children[i];
+      children.forEach(function(opinion) {
           opinion.width = barWidth;
           opinion.y0 = cumulateHeight;
           opinion.height = y(opinion.opinionValue);
           cumulateHeight += opinion.height;
-      }
+      });
   });
 
   svg.append("g")
@@ -58,17 +57,7 @@ d3.json("includes/data/data.json", function(error, data) {
       .attr("class", "month")
       .attr("transform", function(d) { return "translate(" + x(d.Date) + ",0)"; })
       .on("click", function(d) {
-          $('#options-tooltip #title h2').text(d.Date);
-          var children = getChildren(d);
-          children.forEach(function() {
-            $('#opinions-tooltip #options').text();
-          });
-          if (eventIndex === _prevMonthIndex) {
-            $('#options-tooltip').toggle();
-          } else {
-            $('#opinions-tooltip').show();
-          }
-          _prevMonthIndex = eventIndex;
+          toogleMonth(this, d);
       });
 
   month.selectAll("rect")
@@ -90,10 +79,10 @@ d3.json("includes/data/data.json", function(error, data) {
       .enter().append("circle")
         .attr("class", "event")
         .attr("r", 5)
-        .attr("cx", function(d) { d.Date = new Date(d.year, d.month, d.date); return x(d.Date); })
+        .attr("cx", function(d) { d.Date = new Date(d.year, d.month-1, d.date); return x(d.Date); })
         .attr("cy", function(d) { return _yTimeline; })
         .on("click", function(d) {
-            toggleEventTooltip(d.eventIndex);
+            toggleEvent(d.eventIndex);
         });
   });
 
@@ -114,15 +103,52 @@ function getDatesRange(data) {
     return [minDate, maxDate];
 }
 
-function toggleOpinionsTooltip() {
+function toogleMonth(element, month) {
+    var date = month.Date;
+    var question = questions[month.questionsIndex];
+    var opinions = month.children[month.children.length-1];
 
+    $('#opinions-tooltip #title h2').text(date);
+    $('#opinions-tooltip #question h3').text(question);
+    for (var i=0; i < opinions.length; ++i) {
+      var opinion = opinions[i];
+      //$('#opinions-tooltip #opinions')
+    }
+
+    if (_prevMonth && (month.year === _prevMonth.year && month.month === _prevMonth.month) ) {
+      $('#opinions-tooltip').toggle();
+      if (element.classList[1] === "selected") {
+        element.classList.remove("selected");
+        $('g[class="month"]').css("opacity", "1.0");
+      } else {
+        element.classList.add("selected");
+        $('g[class~="selected"]').css("opacity", "1.0");
+        $('g[class="month"]').each(function() {
+          $(this).css("opacity", "0.5");
+        });
+      }
+    } else {
+      $('#opinions-tooltip').show();
+      $('.selected').each(function() {
+        this.classList.remove("selected");
+      });
+      element.classList.add("selected");
+      $('g[class~="selected"]').css("opacity", "1.0");
+      $('g[class="month"]').each(function() {
+        $(this).css("opacity", "0.5");
+      });
+    }
+
+    _prevMonth = month;
 }
 
-function toggleEventTooltip(eventIndex) {
+function toggleEvent(eventIndex) {
     var eventName = events[eventIndex];
+
     $('#event-tooltip #title h2').text(eventName);
     $('#event-tooltip #details p').text("דגכלחדגךכד דחגכךלחדגך חדלךכחדג חדלכךדחג דחלכךדג");
     $('#event-tooltip img').attr("src", "includes/img/event_" + eventIndex + ".jpg");
+
     if (eventIndex === _prevEventIndex) {
       $('#event-tooltip').toggle();
     } else {

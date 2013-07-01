@@ -24,12 +24,12 @@ var questions = [
 
 var opinions = [
 	[
+		"לא יודע אין עמדה",
 		"מתנגד מאוד",
 		"די מתנגד",
 		"ככה באמצע",
 		"די תומך",
-		"תומך מאוד",
-		"לא יודע אין עמדה"
+		"תומך מאוד"
 	],
 	[
 		"לא יודע אין עמדה",
@@ -41,13 +41,12 @@ var opinions = [
 ];
 
 var colors = [
-	"#00FF04",
-	"#99FF00",
-	"#D9FF00",
-	"#FFCC00",
-	"#FF8800",
-	"#FF6600",
-	"#FF1900"
+	"#E6E6E6", // Avoided - grey
+	"#F05A23", // Negative - orange
+	"#BB7A4A",
+	"#809F77",
+	"#4DBE9D",
+	"#09E8CD"  // Positive - green
 ];
 
 var events = [
