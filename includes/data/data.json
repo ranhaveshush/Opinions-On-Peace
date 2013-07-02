@@ -1457,7 +1457,7 @@
 		"year": 2010,
 		"questionsIndex": 1,
 		"nationalitiesIndex": 2,
-		"opinionsIndex": 2,
+		"opinionsIndex": 0,
 		"children": [
 			{
 				"nationalityIndex": 0,

@@ -1,16 +1,16 @@
 $(document).ready(function() {
 
-	$('#title').text(title);
-	$('#subtitle').text(subtitle);
-	$('#question').text(questions[1]);
+	$('#title').text(_title);
+	$('#subtitle').text(_subtitle);
+	$('#question').text(_questions[1]);
 
-	$('#support').text(opinions[0][5]);
-	$('#oppose').text(opinions[0][1]);
-	$('#avoid').text(opinions[0][0]);
+	$('#support').text(_opinions[0][5]);
+	$('#oppose').text(_opinions[0][1]);
+	$('#avoid').text(_opinions[0][0]);
 
-	$('#authors').text(authors);
-	$('#reference span').text(referenceText);
-	$('#reference a').text('\"' + referenceLink + '\"');
+	$('#authors').text(_authors);
+	$('#reference span').text(_referenceText);
+	$('#reference a').text('\"' + _referenceLink + '\"');
 
 
 	$('body').delegate('[id^="scroll"] div', "click", function() {

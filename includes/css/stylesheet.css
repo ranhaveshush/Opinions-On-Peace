@@ -11,14 +11,13 @@ body {
 }
 
 header {
-  border-top: 2px solid grey;
-  border-bottom: 2px solid grey;
+  height: 150px;
 }
 
 footer {
   position: relative;
-  height: 40px;
-  line-height: 40px;
+  height: 35px;
+  line-height: 35px;
   border-top: 2px solid grey;
 }
 
@@ -38,7 +37,7 @@ a {
 
 #wrapper {
   position: relative;
-  top: 40px;
+  top: 5px;
   height: 650px;
   margin: 0px auto;
 }
@@ -48,21 +47,23 @@ a {
 }
 
 #title {
-  height: 80px;
-  line-height: 80px;
+  height: 78px;
+  line-height: 78px;
+  border-top: 2px solid grey;
   font-weight: bold;
   font-size: 63px;
 }
 
 #subtitle {
-  height: 50px;
-  font-size: 21px;
+  height: 29px;
   border-bottom: 1px solid grey;
+  font-size: 21px;
 }
 
 #question {
-  height: 50px;
-  line-height: 50px;
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 2px solid grey;
   font-weight: bold;
   font-size: 14px;
 }
@@ -72,13 +73,14 @@ a {
 /*************/
 
 #event-tooltip, #opinions-tooltip {
+  display: none;
   position: absolute;
   top: 0px;
-  height: 200px;
+  height: 148px;
+  background-color: white;
+  border: 2px solid grey;
+  color: grey;
   z-index: 10;
-  color: white;
-  background-color: black;
-  display: none;
 }
 
 #event-tooltip #title, #event-tooltip #details {
@@ -107,21 +109,57 @@ a {
   background-color: blue;
 }
 
-#opinions-tooltip #title {
-  height: 50px;
-  background-color: red;
+#opinions-tooltip {
 }
 
-#opinions-tooltip #question {
-  top: 100px;
-  height: 50px;
-  background-color: green;
+#opinions-tooltip #date-container, #opinions-tooltip #opinions-container {
+  margin: 0px 50px;
+}
+
+#opinions-tooltip #date-container {
+  height: 73px;
+  line-height: 73px;
+  color: grey;
+  font-size: 60px;
+  font-weight: bolder;
+  border-bottom: 1px solid grey;
 }
 
 #opinions-tooltip #opinions {
-  top: 100px;
-  height: 100px;
-  background-color: blue;
+  top: 75px;
+  height: 74px;
+}
+
+.opinion, .opinion-color {
+  width: 150px;
+}
+
+.opinion {
+  position: relative;
+  top: 17px;
+  height: 40px;
+  display: inline-block;
+}
+
+.opinion-text, .opinion-percentage, .opinion-color {
+  position: absolute;
+}
+
+.opinion-text, .opinion-percentage {
+  top: 0px;
+}
+
+.opinion-text {
+  right: 0px;
+}
+
+.opinion-percentage {
+  left: 0px;
+}
+
+.opinion-color {
+  bottom: 0px;
+  height: 15px;
 }
 
 /************/
@@ -145,12 +183,12 @@ a {
 }
 
 #scroll-old, #scroll-new, #scroll-old div, #scroll-new div {
-  height: 330px;
+  height: 331px;
 }
 
 #scroll-old, #scroll-new {
   position: absolute;
-  bottom: 20px;
+  bottom: 19px;
   width: 50px;
   background-color: white;
   z-index: 10;
@@ -165,6 +203,7 @@ a {
 }
 
 #scroll-old div, #scroll-new div {
+  position: absolute;
   width: 35px;
   cursor: pointer;
   background-color: grey;
@@ -172,17 +211,16 @@ a {
 }
 
 #scroll-old div {
-  float: left;
+  left: 0px;
 }
 
 #scroll-new div {
-  float: right;
+  right: 0px;
 }
 
-.axis path,
-.axis line {
+.axis path, .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #000000;
   stroke-width: 2;
   shape-rendering: crispEdges;
 }
@@ -192,16 +230,11 @@ a {
 }
 
 .event {
-  fill: yellow;
+  fill: #FBB03B;
 }
 
 .seletedMonth {
 
-}
-
-rect {
-  fill: #00FF00;
-  fill-opacity: 0.5;
 }
 
 /**************/

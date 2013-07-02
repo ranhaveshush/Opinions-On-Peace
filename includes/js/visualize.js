@@ -1,17 +1,17 @@
 var _margin = {top: 50, right: 40, bottom: 20, left: 40},
-    width = 1200*4 - _margin.left - _margin.right,
-    height = 400 - _margin.top - _margin.bottom;
+    _width = 1200*4 - _margin.left - _margin.right,
+    _height = 400 - _margin.top - _margin.bottom;
 
 var _yTimeline = -15;
 var _prevMonth;
 var _prevEventIndex = -1;
 
 var x = d3.time.scale()
-    .range([0, width]);
+    .range([0, _width]);
 
 var y = d3.scale.linear()
     .domain([0, 100])
-    .rangeRound([0, height]);
+    .rangeRound([0, _height]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -19,8 +19,8 @@ var xAxis = d3.svg.axis()
     .orient("top");
 
 var svg = d3.select("#data-vis").append("svg")
-    .attr("width", width + _margin.left + _margin.right)
-    .attr("height", height + _margin.top + _margin.bottom)
+    .attr("width", _width + _margin.left + _margin.right)
+    .attr("height", _height + _margin.top + _margin.bottom)
   .append("g")
     .attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
 
@@ -29,7 +29,7 @@ d3.json("includes/data/data.json", function(error, data) {
   x.domain(getDatesRange(data));
 
   var gapPercentage = 0.5;
-  var barWidth = Math.floor( (width / data.length) * (1-gapPercentage) );
+  var barWidth = Math.floor( (_width / data.length) * (1-gapPercentage) );
 
   data.forEach(function(d) {
       d.Date = new Date(d.year, d.month-1, 15);
@@ -46,6 +46,7 @@ d3.json("includes/data/data.json", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0, " + _yTimeline + ")")
+      .style("stroke-dasharray", ("3, 3"))
       .call(xAxis);
 
   var monthsContainer = svg.append("g")
@@ -67,7 +68,7 @@ d3.json("includes/data/data.json", function(error, data) {
       .attr("width", function(d) {return d.width; })
       .attr("height", function(d) { return d.height; })
       .attr("percentage", function(d) { return d.opinionValue })
-      .style("fill", function(d) { return colors[d.opinionIndex]; });
+      .style("fill", function(d) { return _colors[d.opinionIndex]; });
 
   d3.json("includes/data/events.json", function(error, data) {
 
@@ -78,7 +79,7 @@ d3.json("includes/data/data.json", function(error, data) {
         .data(data)
       .enter().append("circle")
         .attr("class", "event")
-        .attr("r", 5)
+        .attr("r", 10)
         .attr("cx", function(d) { d.Date = new Date(d.year, d.month-1, d.date); return x(d.Date); })
         .attr("cy", function(d) { return _yTimeline; })
         .on("click", function(d) {
@@ -104,17 +105,49 @@ function getDatesRange(data) {
 }
 
 function toogleMonth(element, month) {
-    var date = month.Date;
-    var question = questions[month.questionsIndex];
-    var opinions = month.children[month.children.length-1];
+    var dateContainer = $('#opinions-tooltip #date-container');
+    var opinionsContainer = $('#opinions-tooltip #opinions-container');
 
-    $('#opinions-tooltip #title h2').text(date);
-    $('#opinions-tooltip #question h3').text(question);
-    for (var i=0; i < opinions.length; ++i) {
+    // clears previous tooltips content
+    dateContainer.empty();
+    opinionsContainer.empty();
+
+    // gets the month data
+    var date = month.Date;
+    var opinionsIndex = month.opinionsIndex;
+    var opinions = month.children[month.children.length-1].children;
+    //var question = questions[month.questionsIndex];
+
+    // renders date
+    var monthText = date.getMonth()+1;
+    var yearText = date.getFullYear();
+    var dateText = monthText + "-" + yearText;
+    dateContainer.text(dateText);
+
+    // calcs the white space between opinions
+    var length = opinions.length;
+    var whitespace = (1100 / length) - 150;
+    
+    // renders opinions
+    for (var i=0; i < length; ++i) {
       var opinion = opinions[i];
-      //$('#opinions-tooltip #opinions')
+      var opinionIndex = opinion.opinionIndex;
+
+      var opinionText = _opinions[opinionsIndex][opinionIndex];
+      var opinionPercentage = opinion.opinionValue;
+      var opinionColor = _colors[opinionIndex];
+
+      var opinionElement = $('<section>')
+        .addClass('opinion')
+        .css('margin-left', whitespace + "px")
+        .append('<span class="opinion-text">' + opinionText + '</span>')
+        .append('<span class="opinion-percentage">' + opinionPercentage + '</span>')
+        .append('<div class="opinion-color" style="background-color:' + opinionColor + ';"></div>');
+
+      opinionsContainer.prepend(opinionElement);
     }
 
+    // ugly but handling the toggle
     if (_prevMonth && (month.year === _prevMonth.year && month.month === _prevMonth.month) ) {
       $('#opinions-tooltip').toggle();
       if (element.classList[1] === "selected") {
