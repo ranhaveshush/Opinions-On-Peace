@@ -3,31 +3,74 @@
   margin: 0px;
   border: 0px;
 }
+
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
-  background-color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  direction: rtl;
 }
-#wrapper, #title, #subtitle, #event-tooltip, #opinions-tooltip, #colors-map {
+
+header {
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+}
+
+footer {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  border-top: 2px solid grey;
+}
+
+a {
+  text-decoration: none;
+}
+
+/**********/
+/* header */
+/**********/
+
+#wrapper, #title, #subtitle, #question, #event-tooltip, #opinions-tooltip, #colors-map {
+  display: block;
   width: 1200px;
 }
+
+
 #wrapper {
   position: relative;
+  top: 40px;
   height: 650px;
   margin: 0px auto;
 }
-#title, #subtitle {
+
+#title, #subtitle, #question {
   display: block;
-  color: white;
-  text-align: center;
-  background-color: yellow;
 }
+
 #title {
-  height: 50px;
+  height: 80px;
+  line-height: 80px;
+  font-weight: bold;
+  font-size: 63px;
 }
+
 #subtitle {
-  height: 150px;
+  height: 50px;
+  font-size: 21px;
+  border-bottom: 1px solid grey;
 }
+
+#question {
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/*************/
+/* tool tips */
+/*************/
+
 #event-tooltip, #opinions-tooltip {
   position: absolute;
   top: 0px;
@@ -37,21 +80,25 @@ body {
   background-color: black;
   display: none;
 }
+
 #event-tooltip #title, #event-tooltip #details {
   position: absolute;
   right: 0px;
   width: 500px;
 }
+
 #event-tooltip #title {
   height: 50px;
   background-color: red;
 }
+
 #event-tooltip #details {
   top:50px;
   height: 150px;
   text-align: right;
   background-color: green;
 }
+
 #event-tooltip img {
   position: absolute;
   left: 0px;
@@ -59,43 +106,79 @@ body {
   height: 200px;
   background-color: blue;
 }
+
 #opinions-tooltip #title {
   height: 50px;
   background-color: red;
 }
+
 #opinions-tooltip #question {
   top: 100px;
   height: 50px;
   background-color: green;
 }
+
 #opinions-tooltip #opinions {
   top: 100px;
   height: 100px;
   background-color: blue;
 }
-#scroll-old, #scroll-new, #data-vis {
+
+/************/
+/* data VIS */
+/************/
+
+#data-vis, #scroll-old, #scroll-new {
   height: 400px;
   display: inline-block;
 }
-#scroll-old, #scroll-new {
-  width: 50px;
-  cursor: pointer;
-  background-color: grey;
-}
+
 #data-vis {
   position: relative;
-  width: 1092px;
+  width: 1200px;
   overflow: hidden;
 }
+
 #data-vis svg {
   position: absolute;
   right: 0px;
 }
-#colors-map {
-  height: 50px;
-  display: block;
-  background-color: yellow;
+
+#scroll-old, #scroll-new, #scroll-old div, #scroll-new div {
+  height: 330px;
 }
+
+#scroll-old, #scroll-new {
+  position: absolute;
+  bottom: 20px;
+  width: 50px;
+  background-color: white;
+  z-index: 10;
+}
+
+#scroll-old {
+  left: 0px;
+}
+
+#scroll-new {
+  right: 0px;
+}
+
+#scroll-old div, #scroll-new div {
+  width: 35px;
+  cursor: pointer;
+  background-color: grey;
+  z-index: 20;
+}
+
+#scroll-old div {
+  float: left;
+}
+
+#scroll-new div {
+  float: right;
+}
+
 .axis path,
 .axis line {
   fill: none;
@@ -103,15 +186,115 @@ body {
   stroke-width: 2;
   shape-rendering: crispEdges;
 }
+
 .month {
 
 }
+
 .event {
   fill: yellow;
 }
+
 .seletedMonth {
+
 }
+
 rect {
   fill: #00FF00;
   fill-opacity: 0.5;
+}
+
+/**************/
+/* colors map */
+/**************/
+
+#colors-map {
+  position: relative;
+  height: 50px;
+}
+
+#gradient-map, #solid-map {
+  position: absolute;
+  height: 35px;
+}
+
+#gradient-map{
+  right: 50px;
+  width: 500px;
+}
+
+#solid-map {
+  left: 50px;
+  width: 125px;
+}
+
+#support, #oppose, #avoid {
+  position: absolute;
+  top: 0px;
+}
+
+#support {
+  right: 0px;
+}
+
+#oppose {
+  left: 0px;
+}
+
+#avoid {
+
+}
+
+#opinions-gradient, #opinions-solid {
+  position: absolute;
+  bottom: 0px;
+  height: 10px;
+}
+
+#opinions-gradient {
+  right: 0px;
+  background: linear-gradient(to right, #F05A23, #BB7A4A, #809F77, #4DBE9D, #09E8CD);
+  width: 500px;
+}
+
+#opinions-solid {
+  left: 0px;
+  background-color: grey;
+  width: 125px;
+}
+
+/**********/
+/* footer */
+/**********/
+
+.circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: grey;
+}
+
+#right-circle, #left-circle {
+  position: absolute;
+  top: -5px;
+}
+
+#right-circle {
+  right: 0px;
+}
+
+#left-circle {
+  left: 0px;
+}
+
+#authors, #reference {
+  position: absolute;
+}
+
+#authors {
+  right: 0px;
+}
+
+#reference {
+  left: 0px;
 }

@@ -7,13 +7,13 @@
   </head>
 
   <body>
+
     <div id="wrapper">
+
       <header>
-        <section id="title"><h1></h1></section>
-        <section id="subtitle">
-          <h3></h3>
-          <h2></h2>
-        </section>
+        <section id="title"></section>
+        <section id="subtitle"></section>
+        <section id="question"></section>
         <section id="event-tooltip">
           <section id="title"><h2></h2></section>
           <section id="details"><p></p></section>
@@ -25,15 +25,41 @@
           <section id="opinions"></section>
         </section>
       </header>
-      <section id="scroll-old"></section>
-      <section id="data-vis"></section>
-      <section id="scroll-new"></section>
-      <footer id="colors-map"></footer>
+
+      <section id="data-vis">
+        <section id="scroll-old"><div></div></section>
+        <section id="scroll-new"><div></div></section>
+      </section>
+
+      <section id="colors-map">
+        <section id="gradient-map">
+          <span id="support"></span>
+          <span id="oppose"></span>
+          <div id="opinions-gradient"></div>
+        </section>
+        <section id="solid-map">
+          <span id="avoid"></span>
+          <div id="opinions-solid"></div>
+        </section>
+      </section>
+
+      <footer>
+        <div id="right-circle" class="circle"></div>
+        <div id="left-circle" class="circle"></div>
+        <section id="authors"></section>
+        <section id="reference">
+          <span></span>
+          <a href="http://www.peaceindex.org/default.aspx"></a>
+        </section>
+      </footer>
+
     </div>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="includes/js/d3/d3.v3.min.js"></script>
     <script src="includes/js/lang-heb.js"></script>
     <script src="includes/js/visualize.js"></script>
     <script src="includes/js/scripts.js"></script>
+
   </body>
 </html>
