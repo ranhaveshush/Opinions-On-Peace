@@ -2,7 +2,7 @@ var _margin = {top: 50, right: 40, bottom: 20, left: 40},
     _width = 1200*4 - _margin.left - _margin.right,
     _height = 400 - _margin.top - _margin.bottom;
 
-var _yTimeline = -15;
+var _yTimeline = -19;
 var _prevMonth;
 var _prevEventIndex = -1;
 
@@ -29,7 +29,7 @@ d3.json("includes/data/data.json", function(error, data) {
   x.domain(getDatesRange(data));
 
   // calcs the bars and gaps with in percentages
-  var gapPercentage = 0.25;
+  var gapPercentage = 0.2;
   var barWidth = Math.floor( (_width / data.length) * (1-gapPercentage) );
 
   data.forEach(function(d) {
@@ -47,7 +47,7 @@ d3.json("includes/data/data.json", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0, " + _yTimeline + ")")
-	  .style("stroke-dasharray", ("1, 3"))
+	  .style("stroke-dasharray", ("1, 5"))
 	  .attr("stroke", "#808080")
 	  .attr("fill", "#808080")
 	  .call(xAxis);
@@ -159,7 +159,7 @@ function toogleMonth(element, month) {
       .addClass('opinion')
       .css('margin-left', whitespace + "px")
       .append('<span class="opinion-text">' + opinionText + '</span>')
-      .append('<span class="opinion-percentage">' + opinionPercentage + '</span>')
+      .append('<span class="opinion-percentage">' + opinionPercentage + '%' + '</span>')
       .append('<div class="opinion-color" style="background-color:' + opinionColor + ';"></div>');
 
     opinionsContainer.prepend(opinionElement);
@@ -207,8 +207,8 @@ function toggleEvent(event) {
   var eventDateText = monthText + "-" + yearText;
 	var eventDetails = 	_events[eventIndex].details;
 
-  $('#event-tooltip #title h2').text(eventTitle+" "+eventDateText);
-  $('#event-tooltip #details p').text(eventDetails);
+  $('#event-tooltip #event-title').text(eventTitle+" "+eventDateText);
+  $('#event-tooltip #event-details p').text(eventDetails);
   $('#event-tooltip img').attr("src", "includes/img/event_" + eventIndex + ".jpg");
 
   if (eventIndex === _prevEventIndex) {
