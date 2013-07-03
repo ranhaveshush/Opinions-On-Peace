@@ -81,7 +81,6 @@ a {
   top: 0px;
   height: 148px;
   background-color: #4D4D4D;
-  padding:10px;
   color: white;
   z-index: 10;
 }
@@ -209,7 +208,7 @@ a {
 }
 
 #scroll-old {
-  left: 0px;
+   left: 0px;
 }
 
 #scroll-new {
@@ -220,18 +219,31 @@ a {
   position: absolute;
   width: 35px;
   cursor: pointer;
-  background-color: grey;
+  background-color: #666666;
   z-index: 20;
+}
+#scroll-old div src,#scroll-new div  src{
+position: absolute;
+top:140px;
+width: 25px;
+height:45px;
+ z-index: 25;
 }
 
 #scroll-old div {
   left: 0px;
 }
-
+#scroll-old div src {
+background:url(../img/Left-Arrow-.png) no-repeat;
+left:5px;
+}
 #scroll-new div {
   right: 0px;
 }
-
+#scroll-new div  src{
+  background:url(../img/Right-Arrow.png) no-repeat;
+  right:5px;
+}
 .axis path, .axis line {
   fill: none;
   stroke: #808080;
