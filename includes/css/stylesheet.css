@@ -1,31 +1,36 @@
 /*@font-face {
   font-family: adumaLight;
-  src: url(fonts/aduma-light-webfont.woff);
+  src: url(fonts/aduma/aduma-light-webfont.woff);
 }
 
 @font-face {
   font-family: adumaMedium;
-  src: url(fonts/aduma-medium-webfont.woff);
+  src: url(fonts/aduma/aduma-medium-webfont.woff);
 }
 
 @font-face {
   font-family: adumaRegular;
-  src: url(fonts/aduma-regular-webfont.woff);
+  src: url(fonts/aduma/aduma-regular-webfont.woff);
 }
 
 @font-face {
   font-family: adumaBold;
-  src: url(fonts/aduma-bold-webfont.woff);
+  src: url(fonts/aduma/aduma-bold-webfont.woff);
 }
 
 @font-face {
   font-family: adumaHeavy;
-  src: url(fonts/aduma-heavy-webfont.woff);
+  src: url(fonts/aduma/aduma-heavy-webfont.woff);
 }*/
 
 @font-face {
-  font-family: "My Custom Font";
-  src: url(fonts/almoni-tzar-aaa-regular.otf);
+  font-family: "almoni-regular";
+  src: url(fonts/almoni/almoni-tzar-aaa-regular.otf);
+}
+
+@font-face {
+  font-family: "almoni-bold";
+  src: url(fonts/almoni/almoni-tzar-aaa-bold.otf);
 }
 
 * {
@@ -36,7 +41,7 @@
 
 body {
   position: relative;
-  font-family: "My Custom Font","Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "almoni-regular","Helvetica Neue", Helvetica, Arial, sans-serif;
   direction: rtl;
 }
 
@@ -246,16 +251,34 @@ a {
   position: absolute;
   width: 35px;
   cursor: pointer;
-  background-color: grey;
+  background-color: #666666;
   z-index: 20;
+}
+
+#scroll-old div img, #scroll-new div img {
+  position: absolute;
+  top: 140px;
+  width: 25px;
+  height: 45px;
+  z-index: 25;
 }
 
 #scroll-old div {
   left: 0px;
 }
 
+#scroll-old div img {
+  background: url(../imgs/Left-Arrow-.png) no-repeat;
+  left: 5px;
+}
+
 #scroll-new div {
   right: 0px;
+}
+
+#scroll-new div img {
+  background: url(../imgs/Right-Arrow.png) no-repeat;
+  right: 5px;
 }
 
 .axis path, .axis line {

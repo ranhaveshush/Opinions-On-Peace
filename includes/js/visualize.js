@@ -28,7 +28,8 @@ d3.json("includes/data/data.json", function(error, data) {
 
   x.domain(getDatesRange(data));
 
-  var gapPercentage = 0.5;
+  // calcs the bars and gaps with in percentages
+  var gapPercentage = 0.25;
   var barWidth = Math.floor( (_width / data.length) * (1-gapPercentage) );
 
   data.forEach(function(d) {
