@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: adumaLight;
   src: url(fonts/aduma-light-webfont.woff);
 }
@@ -21,6 +21,11 @@
 @font-face {
   font-family: adumaHeavy;
   src: url(fonts/aduma-heavy-webfont.woff);
+}*/
+
+@font-face {
+  font-family: "My Custom Font";
+  src: url(fonts/almoni-tzar-aaa-regular.otf);
 }
 
 * {
@@ -31,6 +36,7 @@
 
 body {
   position: relative;
+  font-family: "My Custom Font","Helvetica Neue", Helvetica, Arial, sans-serif;
   direction: rtl;
 }
 
@@ -68,32 +74,27 @@ a {
 
 #title, #subtitle, #question {
   display: block;
-  font-family: adumaLight;
 }
 
 #title {
-  height: 105px;
-  line-height: 105px;
+  height: 78px;
+  line-height: 78px;
   border-top: 2px solid grey;
-  font-size: 104px;
-}
-
-#subtitle, #question {
-  color: grey;
+  font-weight: bold;
+  font-size: 87px;
 }
 
 #subtitle {
-  height: 34px;
-  line-height: 34px;
+  height: 29px;
   border-bottom: 1px solid grey;
-  font-size: 34px;
+  font-size: 26px;
 }
 
 #question {
-  height: 23px;
-  line-height: 23px;
+  height: 38px;
+  line-height: 38px;
   border-bottom: 2px solid grey;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 /*************/
@@ -105,10 +106,13 @@ a {
   position: absolute;
   top: 0px;
   height: 148px;
-  background-color: white;
-  border: 2px solid grey;
-  color: grey;
   z-index: 10;
+}
+
+#event-tooltip {
+  background-color: #4D4D4D;
+  padding:10px;
+  color: white;
 }
 
 #event-tooltip #title, #event-tooltip #details {
@@ -118,26 +122,34 @@ a {
 }
 
 #event-tooltip #title {
-  height: 50px;
-  background-color: red;
+  height: 48px;
+  line-height: 48px;
+  background-color: #4D4D4D;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 #event-tooltip #details {
   top:50px;
-  height: 150px;
+  height: 100px;
   text-align: right;
-  background-color: green;
+  background-color: #4D4D4D;
 }
 
 #event-tooltip img {
   position: absolute;
-  left: 0px;
-  width: 700px;
-  height: 200px;
-  background-color: blue;
+  left: 100px;
+  width: 450px;
+  height: 148px;
+  background-color: #4D4D4D;
+  border: 5px #333333;
 }
 
+
 #opinions-tooltip {
+  background-color: #F4F4F4;
+  border: 5px #666666;
+  color: black;
 }
 
 #opinions-tooltip #date-container, #opinions-tooltip #opinions-container {
@@ -248,7 +260,7 @@ a {
 
 .axis path, .axis line {
   fill: none;
-  stroke: #000000;
+  stroke: #808080;
   stroke-width: 2;
   shape-rendering: crispEdges;
 }
@@ -320,7 +332,7 @@ a {
 
 #opinions-solid {
   left: 0px;
-  background-color: grey;
+  background-color: #E6E6E6;
   width: 125px;
 }
 
