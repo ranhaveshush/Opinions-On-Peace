@@ -1,51 +1,64 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+    <title>Peace</title>
     <meta charset="utf-8">
-    <style>
-      * {
-        padding: 0px;
-        margin: 0px;
-      }
-      body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        position: relative;
-        background-color: #353535;
-      }
-      #wrapper {
-        width: 1200px;
-        height: 600px;
-        margin: 0px auto;
-      }
-      .question {
-        border: 1px 0px solid black;
-      }
-      .opinion {
-        border: 1px 0px solid black;
-      }
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-      }
-      .month {
-
-      }
-      .event {
-        fill: yellow;
-      }
-      rect {
-        fill: #00FF00;
-        fill-opacity: 0.5;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">
   </head>
 
   <body>
-    <div id="wrapper"></div>
+
+    <div id="wrapper">
+
+      <header>
+        <section id="title"></section>
+        <section id="subtitle"></section>
+        <section id="question"></section>
+        <section id="event-tooltip">
+          <section id="title"><h2></h2></section>
+          <section id="details"><p></p></section>
+          <img src=""/>
+        </section>
+        <section id="opinions-tooltip">
+          <section id="date-container"></section>
+          <section id="opinions-container"></section>
+        </section>
+      </header>
+
+      <section id="data-vis">
+        <section id="scroll-old"><div></div></section>
+        <section id="scroll-new"><div></div></section>
+      </section>
+
+      <section id="colors-map">
+        <section id="gradient-map">
+          <span id="support"></span>
+          <span id="oppose"></span>
+          <div id="opinions-gradient"></div>
+        </section>
+        <section id="solid-map">
+          <span id="avoid"></span>
+          <div id="opinions-solid"></div>
+        </section>
+      </section>
+
+      <footer>
+        <div id="right-circle" class="circle"></div>
+        <div id="left-circle" class="circle"></div>
+        <section id="authors"></section>
+        <section id="reference">
+          <span></span>
+          <a href="http://www.peaceindex.org/default.aspx"></a>
+        </section>
+      </footer>
+
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="includes/js/d3/d3.v3.min.js"></script>
     <script src="includes/js/lang-heb.js"></script>
     <script src="includes/js/visualize.js"></script>
+    <script src="includes/js/scripts.js"></script>
+
   </body>
 </html>
