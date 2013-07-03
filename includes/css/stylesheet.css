@@ -121,26 +121,26 @@ a {
 
 #event-tooltip #event-title, #event-tooltip #event-details {
   position: absolute;
-  right: 0px;
-  width: 500px;
+  right: 25px;
+  width: 600px;
 }
 
 #event-tooltip #event-title {
+  top: 25px;
   height: 50px;
-  line-height: 50px;
-  font-weight: bold;
-  font-size: 25px;
+  font-size: 40px;
 }
 
 #event-tooltip #event-details {
-  top:50px;
-  height: 150px;
-  text-align: right;
+  top:75px;
+  height: 100px;
+  font-size: 23px;
 }
 
 #event-tooltip img {
   position: absolute;
-  left: 0px;
+  top: 25px;
+  left: 25px;
   width: 450px;
   height: 150px;
 }
@@ -292,11 +292,12 @@ a {
 }
 
 .month {
-
+  cursor: pointer;
 }
 
 .event {
   fill: #FBB03B;
+  cursor: pointer;
 }
 
 .seletedMonth {

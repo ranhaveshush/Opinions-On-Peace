@@ -175,7 +175,7 @@ function toogleMonth(element, month) {
       element.classList.add("selected");
       $('g[class~="selected"]').css("opacity", "1.0");
       $('g[class="month"]').each(function() {
-        $(this).css("opacity", "0.5");
+        $(this).css("opacity", "0.45");
       });
     }
   } else {
@@ -186,7 +186,7 @@ function toogleMonth(element, month) {
     element.classList.add("selected");
     $('g[class~="selected"]').css("opacity", "1.0");
     $('g[class="month"]').each(function() {
-      $(this).css("opacity", "0.5");
+      $(this).css("opacity", "0.45");
     });
   }
 
@@ -209,7 +209,7 @@ function toggleEvent(event) {
 
   $('#event-tooltip #event-title').text(eventTitle+" "+eventDateText);
   $('#event-tooltip #event-details p').text(eventDetails);
-  $('#event-tooltip img').attr("src", "includes/img/event_" + eventIndex + ".jpg");
+  $('#event-tooltip img').attr("src", "includes/imgs/event_" + eventIndex + ".jpg");
 
   if (eventIndex === _prevEventIndex) {
     $('#event-tooltip').toggle();
