@@ -28,4 +28,14 @@ $(document).ready(function() {
 		svg.animate({right: right+"px"}, 1500);
 	});
 
+	/*$(window).resize(function(){
+		$('#wrapper').css({
+		position:'absolute',
+		left: ($(window).width() 
+		- $('wrapper').outerWidth())/2,
+		top: ($(window).height() 
+		- $('wrapper').outerHeight())/2
+		});
+	 });*/
+
 });

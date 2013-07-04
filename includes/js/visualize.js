@@ -196,7 +196,9 @@ function toogleMonth(element, month) {
 function toggleEvent(event) {
 	// hides opinions-tooltip
 	$('#opinions-tooltip').hide();
-
+  //remove selected
+  $('g[class="month"]').remove("selected");
+  $('g[class="month"]').css("opacity", "1.0");
 	var eventIndex = event.eventIndex;
   var eventTitle = _events[eventIndex].title;
 	// gets the month data
