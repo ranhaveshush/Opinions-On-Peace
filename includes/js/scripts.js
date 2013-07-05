@@ -12,7 +12,6 @@ $(document).ready(function() {
 	$('#reference span').text(_referenceText);
 	$('#reference a').text('\"' + _referenceLink + '\"');
 
-
 	$('body').delegate('[id^="scroll"] div', "click", function() {
 		var scrollDelta = 353;
 		var id = $(this).parent().attr("id");
