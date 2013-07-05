@@ -1,21 +1,53 @@
+/*@font-face {
+  font-family: adumaLight;
+  src: url(fonts/aduma/aduma-light-webfont.woff);
+}
+
+@font-face {
+  font-family: adumaMedium;
+  src: url(fonts/aduma/aduma-medium-webfont.woff);
+}
+
+@font-face {
+  font-family: adumaRegular;
+  src: url(fonts/aduma/aduma-regular-webfont.woff);
+}
+
+@font-face {
+  font-family: adumaBold;
+  src: url(fonts/aduma/aduma-bold-webfont.woff);
+}
+
+@font-face {
+  font-family: adumaHeavy;
+  src: url(fonts/aduma/aduma-heavy-webfont.woff);
+}*/
+
+@font-face {
+  font-family: "almoni-regular";
+  src: url(fonts/almoni/almoni-tzar-aaa-regular.otf);
+}
+
+@font-face {
+  font-family: "almoni-bold";
+  src: url(fonts/almoni/almoni-tzar-aaa-bold.otf);
+}
+
 * {
   padding: 0px;
   margin: 0px;
   border: 0px;
 }
-@font-face {
-    font-family: "My Custom Font";
-    src: url(almoni-tzar-aaa-regular.otf) ;
-}
 
 body {
   position: relative;
-  font-family: "My Custom Font","Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #4D4D4D;
+  font-family: "almoni-regular";
   direction: rtl;
 }
 
 header {
-  height: 150px;
+  height: 200px;
 }
 
 footer {
@@ -51,23 +83,21 @@ a {
 }
 
 #title {
-  height: 78px;
-  line-height: 78px;
-  border-top: 2px solid grey;
-  font-weight: bold;
-  font-size: 87px;
+  height: 108px;
+  line-height: 108px;
+  font-size: 90px;
 }
 
 #subtitle {
-  height: 29px;
+  height: 49px;
   border-bottom: 1px solid grey;
-  font-size: 26px;
+  font-size: 29px;
 }
 
 #question {
   height: 38px;
   line-height: 38px;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
   font-size: 20px;
 }
 
@@ -75,56 +105,52 @@ a {
 /* tool tips */
 /*************/
 
-#event-tooltip{
+#event-tooltip, #opinions-tooltip {
   display: none;
   position: absolute;
   top: 0px;
-  height: 148px;
-  background-color: #4D4D4D;
-  color: white;
   z-index: 10;
 }
 
-#event-tooltip #title, #event-tooltip #details {
+#event-tooltip {
+  height: 200px;
+  background-color: #4D4D4D;
+  color: white;
+}
+
+#event-tooltip #event-title, #event-tooltip #event-details {
   position: absolute;
-  right: 0px;
-  width: 500px;
+  right: 25px;
+  width: 600px;
 }
 
-#event-tooltip #title {
-  height: 48px;
-  line-height: 48px;
-  background-color: #4D4D4D;
-  font-weight: bold;
-  font-size: 25px;
+#event-tooltip #event-title {
+  top: 25px;
+  height: 50px;
+  font-size: 40px;
 }
 
-#event-tooltip #details {
-  top:50px;
+#event-tooltip #event-details {
+  top:75px;
   height: 100px;
-  text-align: right;
-  background-color: #4D4D4D;
+  font-size: 17px;
+  font-family: arial;
 }
 
 #event-tooltip img {
   position: absolute;
-  left: 100px;
+  top: 25px;
+  left: 25px;
   width: 450px;
-  height: 148px;
-  background-color: #4D4D4D;
-  border: 5px #333333;
+  height: 150px;
 }
 
 
 #opinions-tooltip {
-  display: none;
-  position: absolute;
-  top: 0px;
-  height: 148px;
+  height: 196px;
+  color: #A2A2A2;
   background-color: #F4F4F4;
-  border: 5px #666666;
-  color: black;
-  z-index: 10;
+  border: 2px solid #E6E6E6;
 }
 
 #opinions-tooltip #date-container, #opinions-tooltip #opinions-container {
@@ -132,17 +158,16 @@ a {
 }
 
 #opinions-tooltip #date-container {
-  height: 73px;
-  line-height: 73px;
-  color: grey;
-  font-size: 60px;
+  height: 97px;
+  line-height: 97px;
+  font-size: 80px;
   font-weight: bolder;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #E3E3E3;
 }
 
-#opinions-tooltip #opinions {
-  top: 75px;
-  height: 74px;
+#opinions-tooltip #opinions-container {
+  top: 100px;
+  height: 98px;
 }
 
 .opinion, .opinion-color {
@@ -151,8 +176,8 @@ a {
 
 .opinion {
   position: relative;
-  top: 17px;
-  height: 40px;
+  top: 25px;
+  height: 50px;
   display: inline-block;
 }
 
@@ -162,6 +187,7 @@ a {
 
 .opinion-text, .opinion-percentage {
   top: 0px;
+  font-size: 21px;
 }
 
 .opinion-text {
@@ -189,12 +215,15 @@ a {
 #data-vis {
   position: relative;
   width: 1200px;
+  margin-top: 30px;
   overflow: hidden;
 }
+
 #data-vis svg {
   position: absolute;
-  right: -40px;
+  right: -188px;
 }
+
 #scroll-old, #scroll-new, #scroll-old div, #scroll-new div {
   height: 331px;
 }
@@ -202,13 +231,13 @@ a {
 #scroll-old, #scroll-new {
   position: absolute;
   bottom: 19px;
-  width: 50px;
+  width: 40px;
   background-color: white;
   z-index: 10;
 }
 
 #scroll-old {
-   left: 0px;
+  left: 0px;
 }
 
 #scroll-new {
@@ -222,41 +251,53 @@ a {
   background-color: #666666;
   z-index: 20;
 }
-#scroll-old div src,#scroll-new div  src{
-position: absolute;
-top:140px;
-width: 25px;
-height:45px;
- z-index: 25;
+
+#scroll-old div img, #scroll-new div img {
+  position: absolute;
+  top: 140px;
+  width: 25px;
+  height: 45px;
+  z-index: 25;
 }
 
 #scroll-old div {
   left: 0px;
 }
-#scroll-old div src {
-background:url(../img/Left-Arrow-.png) no-repeat;
-left:5px;
+
+#scroll-old div img {
+  background: url(../imgs/Left-Arrow.png) no-repeat;
+  left: 5px;
 }
+
 #scroll-new div {
   right: 0px;
 }
-#scroll-new div  src{
-  background:url(../img/Right-Arrow.png) no-repeat;
-  right:5px;
+
+#scroll-new div img {
+  background: url(../imgs/Right-Arrow.png) no-repeat;
+  right: 5px;
 }
+
 .axis path, .axis line {
   fill: none;
   stroke: #808080;
   stroke-width: 2;
-  shape-rendering: crispEdges;
+  shape-rendering: crispEdges;  
+}
+
+.axis text {
+  font-family: "almoni-regular";
+  font-size:35px;
+  stroke-opacity: 0;
 }
 
 .month {
-
+  cursor: pointer;
 }
 
 .event {
   fill: #FBB03B;
+  cursor: pointer;
 }
 
 .seletedMonth {
@@ -278,18 +319,19 @@ left:5px;
 }
 
 #gradient-map{
-  right: 50px;
+  right: 40px;
   width: 500px;
 }
 
 #solid-map {
-  left: 50px;
+  left: 40px;
   width: 125px;
 }
 
 #support, #oppose, #avoid {
   position: absolute;
   top: 0px;
+  font-size: 22px;
 }
 
 #support {
@@ -351,9 +393,9 @@ left:5px;
 }
 
 #authors {
-  right: 0px;
+  right: 15px;
 }
 
 #reference {
-  left: 0px;
+  left: 15px;
 }

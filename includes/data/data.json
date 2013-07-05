@@ -578,7 +578,7 @@
 		]
 	},
 	{
-		"month": 7,
+		"month": 8,
 		"year": 2002,
 		"questionsIndex": 0,
 		"nationalitiesIndex": 1,
@@ -587,23 +587,23 @@
 			{
 				"nationalityIndex": 0,
 				"children": [
-					{"opinionIndex": 0, "opinionValue": 1.8},
-					{"opinionIndex": 1, "opinionValue": 8.8},
-					{"opinionIndex": 2, "opinionValue": 6.4},
-					{"opinionIndex": 3, "opinionValue": 9.4},
-					{"opinionIndex": 4, "opinionValue": 32.8},
-					{"opinionIndex": 5, "opinionValue": 40.8}					
+					{"opinionIndex": 0, "opinionValue": 1.4},
+					{"opinionIndex": 1, "opinionValue": 7.9},
+					{"opinionIndex": 2, "opinionValue": 5.8},
+					{"opinionIndex": 3, "opinionValue": 6.1},
+					{"opinionIndex": 4, "opinionValue": 39.1},
+					{"opinionIndex": 5, "opinionValue": 39.7}					
 				]
 			},
 			{
 				"nationalityIndex": 1,
 				"children": [
-					{"opinionIndex": 0, "opinionValue": 1.8},
-					{"opinionIndex": 1, "opinionValue": 8.5},
-					{"opinionIndex": 2, "opinionValue": 6.0},
-					{"opinionIndex": 3, "opinionValue": 8.6},
-					{"opinionIndex": 4, "opinionValue": 30.4},
-					{"opinionIndex": 5, "opinionValue": 44.9}					
+					{"opinionIndex": 0, "opinionValue": 1.2},
+					{"opinionIndex": 1, "opinionValue": 7.1},
+					{"opinionIndex": 2, "opinionValue": 5.5},
+					{"opinionIndex": 3, "opinionValue": 5.9},
+					{"opinionIndex": 4, "opinionValue": 36.1},
+					{"opinionIndex": 5, "opinionValue": 44.3}					
 				]
 			}
 		]
@@ -638,7 +638,127 @@
 				]
 			}
 		]
-	},	
+	},
+	{
+		"month": 2,
+		"year": 2003,
+		"questionsIndex": 0,
+		"nationalitiesIndex": 1,
+		"opinionsIndex": 0,
+		"children": [
+			{
+				"nationalityIndex": 0,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 1.6},
+					{"opinionIndex": 1, "opinionValue": 8.7},
+					{"opinionIndex": 2, "opinionValue": 6.5},
+					{"opinionIndex": 3, "opinionValue": 12.3},
+					{"opinionIndex": 4, "opinionValue": 32.7},
+					{"opinionIndex": 5, "opinionValue": 38.2}					
+				]
+			},
+			{
+				"nationalityIndex": 1,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 1.4},
+					{"opinionIndex": 1, "opinionValue": 8.2},
+					{"opinionIndex": 2, "opinionValue": 5.9},
+					{"opinionIndex": 3, "opinionValue": 11.0},
+					{"opinionIndex": 4, "opinionValue": 30.8},
+					{"opinionIndex": 5, "opinionValue": 42.8}					
+				]
+			}
+		]
+	},
+	{
+		"month": 5,
+		"year": 2003,
+		"questionsIndex": 0,
+		"nationalitiesIndex": 1,
+		"opinionsIndex": 0,
+		"children": [
+			{
+				"nationalityIndex": 0,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 8.5},
+					{"opinionIndex": 1, "opinionValue": 42.7},
+					{"opinionIndex": 2, "opinionValue": 18.5},
+					{"opinionIndex": 3, "opinionValue": 12.7},
+					{"opinionIndex": 4, "opinionValue": 13.5},
+					{"opinionIndex": 5, "opinionValue": 4.0}					
+				]
+			},
+			{
+				"nationalityIndex": 1,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 8.4},
+					{"opinionIndex": 1, "opinionValue": 39.6},
+					{"opinionIndex": 2, "opinionValue": 17.3},
+					{"opinionIndex": 3, "opinionValue": 13.6},
+					{"opinionIndex": 4, "opinionValue": 14.0},
+					{"opinionIndex": 5, "opinionValue": 7.2}					
+				]
+			}
+		]
+	},
+	{
+		"month": 8,
+		"year": 2003,
+		"questionsIndex": 1,
+		"nationalitiesIndex": 1,
+		"opinionsIndex": 1,
+		"children": [
+			{
+				"nationalityIndex": 0,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 3.1},
+					{"opinionIndex": 1, "opinionValue": 37.3},
+					{"opinionIndex": 2, "opinionValue": 28.9},
+					{"opinionIndex": 3, "opinionValue": 25.0},
+					{"opinionIndex": 4, "opinionValue": 5.7}
+				]
+			},
+			{
+				"nationalityIndex": 1,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 2.7},
+					{"opinionIndex": 1, "opinionValue": 36.2},
+					{"opinionIndex": 2, "opinionValue": 29.3},
+					{"opinionIndex": 3, "opinionValue": 25.9},
+					{"opinionIndex": 4, "opinionValue": 5.8}
+				]
+			}
+		]
+	},
+	{
+		"month": 11,
+		"year": 2003,
+		"questionsIndex": 1,
+		"nationalitiesIndex": 1,
+		"opinionsIndex": 1,
+		"children": [
+			{
+				"nationalityIndex": 0,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 3.6},
+					{"opinionIndex": 1, "opinionValue": 32.6},
+					{"opinionIndex": 2, "opinionValue": 24.1},
+					{"opinionIndex": 3, "opinionValue": 29.2},
+					{"opinionIndex": 4, "opinionValue": 10.5}
+				]
+			},
+			{
+				"nationalityIndex": 1,
+				"children": [
+					{"opinionIndex": 0, "opinionValue": 3.5},
+					{"opinionIndex": 1, "opinionValue": 30.1},
+					{"opinionIndex": 2, "opinionValue": 23.7},
+					{"opinionIndex": 3, "opinionValue": 30.6},
+					{"opinionIndex": 4, "opinionValue": 12.1}
+				]
+			}
+		]
+	},
 	{
 		"month": 2,
 		"year": 2004,
@@ -1336,7 +1456,7 @@
 		]
 	},
 	{
-		"month": 3,
+		"month": 2,
 		"year": 2010,
 		"questionsIndex": 1,
 		"nationalitiesIndex": 2,
@@ -1453,7 +1573,7 @@
 		]
 	},
 	{
-		"month": 12,
+		"month": 11,
 		"year": 2010,
 		"questionsIndex": 1,
 		"nationalitiesIndex": 2,
@@ -1846,7 +1966,7 @@
 		]
 	},
 	{
-		"month": 4,
+		"month": 5,
 		"year": 2013,
 		"questionsIndex": 1,
 		"nationalitiesIndex": 2,
@@ -1855,31 +1975,31 @@
 			{
 				"nationalityIndex": 0,
 				"children": [
-					{"opinionIndex": 0, "opinionValue": 2.4},
-					{"opinionIndex": 1, "opinionValue": 44.2},
-					{"opinionIndex": 2, "opinionValue": 22.6},
-					{"opinionIndex": 3, "opinionValue": 24.0},
-					{"opinionIndex": 4, "opinionValue": 6.8}
+					{"opinionIndex": 0, "opinionValue": 2.5},
+					{"opinionIndex": 1, "opinionValue": 48.2},
+					{"opinionIndex": 2, "opinionValue": 23.1},
+					{"opinionIndex": 3, "opinionValue": 20.9},
+					{"opinionIndex": 4, "opinionValue": 5.2}
 				]
 			},
 			{
 				"nationalityIndex": 1,
 				"children": [
-					{"opinionIndex": 0, "opinionValue": 2.4},
-					{"opinionIndex": 1, "opinionValue": 21.1},
-					{"opinionIndex": 2, "opinionValue": 35.2},
-					{"opinionIndex": 3, "opinionValue": 32.3},
-					{"opinionIndex": 4, "opinionValue": 9.0}
+					{"opinionIndex": 0, "opinionValue": 8.8},
+					{"opinionIndex": 1, "opinionValue": 22.3},
+					{"opinionIndex": 2, "opinionValue": 34.1},
+					{"opinionIndex": 3, "opinionValue": 28.8},
+					{"opinionIndex": 4, "opinionValue": 6.0}
 				]
 			},
 			{
 				"nationalityIndex": 2,
 				"children": [
-					{"opinionIndex": 0, "opinionValue": 2.4},
-					{"opinionIndex": 1, "opinionValue": 40.9},
-					{"opinionIndex": 2, "opinionValue": 24.4},
-					{"opinionIndex": 3, "opinionValue": 25.2},
-					{"opinionIndex": 4, "opinionValue": 7.1}
+					{"opinionIndex": 0, "opinionValue": 3.4},
+					{"opinionIndex": 1, "opinionValue": 44.5},
+					{"opinionIndex": 2, "opinionValue": 24.7},
+					{"opinionIndex": 3, "opinionValue": 22.1},
+					{"opinionIndex": 4, "opinionValue": 5.3}
 				]
 			}
 		]
